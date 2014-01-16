@@ -8,6 +8,13 @@
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="css/introHCI.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+	<style>
+      body {
+        font-family: 'Tangerine', serif;
+        font-size: 48px;
+      }
+    </style>
 	<!-- this is a comment in HTML -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -84,5 +91,39 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script>
+		var cells = $('.project');
+
+		for (var i = 0; i<cells.length; i++){
+			cells[i].onmouseover = changeColor;
+    	}
+
+    	function changeColor(e){
+	        var i = Math.round(Math.random()*2);
+	        var j = Math.round(Math.random()*2);
+
+	        var threshold = Math.random() * 100 + 25;
+	        var colors = [0, 0, 0];
+	        
+	        // don't change colors if the element is already changing colors
+	        if (e.target.className != "changing"){
+	            e.target.className = "changing";
+	            setTimeout(function advanceColor(){
+	                var rgbString = "";
+
+	                if (colors[i] < threshold)
+	                    colors[i] += 20;
+	                if (colors[j] < threshold)
+	                    colors[j] += 20;
+	            
+	                rgbString = 'rgb(' + colors[0].toString() + ',' + colors[1].toString() + ',' + colors[2].toString() + ')';
+	                e.target.style.backgroundColor = rgbString;
+
+	                if (colors[i] < threshold || colors[j] < threshold)
+	                    setTimeout(advanceColor, 30);
+	            }, 30);
+        	}
+    	}
+	</script>
 </body>
 </html>

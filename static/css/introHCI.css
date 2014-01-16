@@ -35,12 +35,12 @@ body {
 
 .project {
     margin-left: 20px;
-    background-color: #deebf7;
+    background-color: #3c5b17;
     padding: 20px;
     width: 525px;
 }
 
-p {
+/*p {
     font-variant: small-caps;
 }
 
@@ -50,4 +50,4 @@ p {
 
 #project1 {
     font-variant: small-caps;
-}
+}*/
